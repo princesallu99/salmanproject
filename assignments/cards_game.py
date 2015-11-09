@@ -11,24 +11,35 @@ CARDS = 52
 CARDS_PER_HAND = 13
 
 
+def show_hand(hand):
+    for card in hand:
+        print(RANKS[card % CARDS_PER_HAND], "of",
+              SUITS[card // CARDS_PER_HAND])
+
+
 def main():
-    # Create a deck as a list of integers from 0 to 51
     deck = list(range(CARDS))
 
-    # Shuffle the deck
     random.shuffle(deck)
 
-    # Show the deck
-    print(deck)
+    north = []
+    east = []
+    south = []
+    west = []
+    for i in range(13):
+        north.append(deck.pop())
+        east.append(deck.pop())
+        south.append(deck.pop())
+        west.append(deck.pop())
+    north.sort()
+    east.sort()
+    south.sort()
+    west.sort()
 
-    # Pop a card from the end of the deck
-    card = deck.pop()
-    print(deck)
-    print(card)
-
-    # What card is it?
-    print("You got the", RANKS[card % CARDS_PER_HAND], "of",
-          SUITS[card // CARDS_PER_HAND])
+    show_hand(north)
+    show_hand(east)
+    show_hand(south)
+    show_hand(west)
 
 
 main()
