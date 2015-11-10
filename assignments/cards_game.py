@@ -14,7 +14,7 @@ CARDS_PER_HAND = 13
 def show_hand(hand):
     for card in hand:
         print(RANKS[card % CARDS_PER_HAND], "of",
-              SUITS[card // CARDS_PER_HAND])
+              SUITS[card // CARDS_PER_HAND], end=" ")
 
 
 def main():
@@ -31,15 +31,28 @@ def main():
         east.append(deck.pop())
         south.append(deck.pop())
         west.append(deck.pop())
+
     north.sort()
-    east.sort()
-    south.sort()
-    west.sort()
-
+    print ("North has :")
     show_hand(north)
+    print("")
+    print("")
+
+    east.sort()
+    print ("East has :")
     show_hand(east)
+    print("")
+    print("")
+
+    south.sort()
+    print ("South has :")
     show_hand(south)
+    print("")
+    print("")
+
+    west.sort()
+    print ("West has :")
     show_hand(west)
-
-
+    print("")
+    print("")
 main()
