@@ -7,12 +7,12 @@ def main():
     # Local variables
     hand1 = 0
     hand2 = 0
-    deck = 52
+    deck = create_deck()
     while hand1 <= MAX and hand2 <= MAX:
-        card1, value1 = hand1(deck.popitem())
+        card1, value1 = deck.popitem()
         hand1 = update_hand_value(hand1, value1, card1)
 
-        card2, value2 = hand2(deck.popitem())
+        card2, value2 = deck.popitem()
         hand2 = update_hand_value(hand2, value2, card2)
 
         print('Player 1 was dealt', card1)
