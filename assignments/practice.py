@@ -1,4 +1,5 @@
-__author__ = 'sjaved'
+__author__ = 'PrinceSallu'
+import random
 MAX = 21
 # main function
 
@@ -8,15 +9,20 @@ def main():
     hand1 = 0
     hand2 = 0
     deck = create_deck()
+
+
     while hand1 <= MAX and hand2 <= MAX:
-        card1, value1 = deck.popitem()
+        print(len(deck))
+        card1 = max(random.sample(deck.keys(), 1))
+        value1 = deck.pop(card1)
         hand1 = update_hand_value(hand1, value1, card1)
 
-        card2, value2 = deck.popitem()
+        card2 = max(random.sample(deck.keys(), 1))
+        value2 = deck.pop(card2)
         hand2 = update_hand_value(hand2, value2, card2)
 
-        print('Player 1 was dealt', card1)
-        print('Player 2 was dealt', card2)
+        print('Player 1 was dealt', card1, hand1)
+        print('Player 2 was dealt', card2, hand2)
         print()
 
     # Determine the winner.
@@ -48,6 +54,7 @@ def create_deck():
                 deck[num + ' of ' + suit] = int(num)
             else:
                 deck[num + ' of ' + suit] = special_values[num]
+
     return deck
 
 
