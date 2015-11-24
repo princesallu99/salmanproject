@@ -1,4 +1,4 @@
-__author__ = 'sjaved'
+__author__ = 'PrinceSallu'
 MAX = 21
 # main function
 
@@ -9,6 +9,7 @@ def main():
     hand2 = 0
     deck = create_deck()
     while hand1 <= MAX and hand2 <= MAX:
+        print(len(deck))
         card1, value1 = deck.popitem()
         hand1 = update_hand_value(hand1, value1, card1)
 
@@ -32,8 +33,7 @@ def create_deck():
     # Set up local variables
     suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds']
     special_values = {'Ace': 1, 'King': 10, 'Queen': 10, 'Jack': 10}
-    #special_values.popitem()
-
+    special_values.popitem()
     numbers = ['Ace', 'King', 'Queen', 'Jack']
     for i in range(2, 11):
         numbers.append(str(i))
