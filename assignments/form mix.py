@@ -10,9 +10,6 @@ tb_city = StringVar
 tb_state = StringVar
 tb_zip = StringVar
 
-# create an empty dictionary
-information_form = {}
-global name
 def main():
     # Create a window
     window = Tk()
@@ -68,75 +65,32 @@ def main():
     Button(window, bg="White", fg="Black", text="FIND", command=find_info) \
         .grid(row=6, column=3, pady=10)
 
-    Button(window, bg="White", fg="Black", text="MODIFY", command=mod_info) \
+    Button(window, bg="White", fg="Black", text="MODIFY", command=modi_info) \
         .grid(row=6, column=4, pady=10)
 
     window.mainloop()
 
-
 def add_info():
-    name = str(tb_name.get())
-    address = tb_address.get()
-    city = tb_city.get()
-    state = tb_state.get()
-    zip_code = tb_zip.get()
+    global dic
+    dic = {'name': tb_name.get(), 'address': tb_address.get(), 'city': tb_city.get(),
+           'state': tb_state.get(), 'zip': tb_zip.get()}
 
-    # if the information is not exist, add it.
-    if name not in information_form:
-        information_form[name] = [str(address), str(city), str(state), str(zip_code)]
-    else:
-        tkinter.messagebox.showinfo("!", "That entry already exists")
-    print(information_form)
+def del_info():
+    global dic
+    dic = {'name': tb_name.get(), 'address': tb_address.get(), 'city': tb_city.get(),
+           'state': tb_state.get(), 'zip': tb_zip.get()}
+    #delete every keys and values
+    dic.clear()
+    tkinter.messagebox.showinfo("Address", "Information is successfully deleted")
 
+def find_info():
+   dic.get('name': tb_name.get(), 'address': tb_address.get(), 'city': tb_city.get(),
+           'state': tb_state.get(), 'zip': tb_zip.get())
 
-def del_info(information_form):
-    # if the information is found, delete the entry.
-    if name in information_form:
-        del information_form[name]
-    else:
-        tkinter.messagebox.showinfo("!", "That entry is not exists")
-
-
-
-def find_info(information_form):
-    name = str(tb_name.get())
-
-    if name in information_form:
-    # find information in dictionary
-        information_form.get(name)
-    else:
-        tkinter.messagebox.showinfo("!", "That entry already exists")
-
-def mod_info(information_form):
-     name = str(tb_name.get())
-
-    if name in information_form:
-        # get new name
-        new_name = name.get()
-        # update the name
-        information_form[name] = new_name
-
-        # get new address
-        new_address = address.get()
-        # update the address
-        information_form[address] = new_address
-
-        # get new city
-        new_city = tb_city.get()
-        # update the city
-        information_form[city] = new_city
-
-        # get new state
-        new_state = tb_state.get()
-        # update the state
-        information_form[state] = new_state
-
-        # get new zip
-        new_zip = tb_zip.get()
-        # update the zip
-        information_form[zip] = new_zip_code
-    else:
-        tkinter.messagebox.showinfo("!", "That entry is not exists")
-
+def mod_info():
+    global dic
+    if name in dic:
+     dic = {'name': tb_name.get(), 'address': tb_address.get(), 'city': tb_city.get(),
+           'state': tb_state.get(), 'zip': tb_zip.get()}
 
 main()
