@@ -92,14 +92,10 @@ def mod_info():
     name = str(tb_name.get())
 
     if name in phone_directory:
-        # get new address
-        new_name = str(tb_name.get())
-        # update the address
-        phone_directory[name] = new_name
 
-        # get new name
+        # get new phone number
         new_phone_number = str(tb_phone_number.get())
-        # update the name
+        # update the phone number
         phone_directory[name] = new_phone_number
     else:
         tkinter.messagebox.showinfo("!", "Name not found")
