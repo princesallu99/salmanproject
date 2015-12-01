@@ -10,14 +10,12 @@ tb_city = StringVar
 tb_state = StringVar
 tb_Zip = StringVar
 
-
+# create an empty dictionary
+information_form = {}
 
 def main():
 
-# create an empty dictionary
-    information_form = {}
-
-# Create a window
+    # Create a window
     window = Tk()
     window.title("Information Form")
 
@@ -36,8 +34,7 @@ def main():
     # Create text fields in column 1
     global tb_name
     tb_name = StringVar()
-    Entry(window, textvariable=tb_name, justify=RIGHT). \
-        grid(row=1, column=2, padx="5", pady="2")
+    Entry(window, textvariable=tb_name, justify=RIGHT).grid(row=1, column=2, padx="5", pady="2")
 
     global tb_address
     tb_address = StringVar()
@@ -54,7 +51,7 @@ def main():
     Entry(window, textvariable=tb_state, justify=RIGHT). \
         grid(row=4, column=2, padx="5", pady="5")
 
-    global tb_Zip
+    global tb_zip
     tb_zip = StringVar()
     Entry(window, textvariable=tb_zip, justify=RIGHT). \
         grid(row=5, column=2, padx="5", pady="2")
@@ -78,33 +75,27 @@ def main():
     window.mainloop()
 
 
-def add_info(information_form):
-    name = input(tb_name)
-    address = input(tb_address)
-    city = input(tb_city)
-    state = input(tb_state)
-    zip = input(tb_Zip)
+def add_info():
+    name = str(tb_name.get())
+    address = tb_address.get()
+    city = tb_city.get()
+    state = tb_state.get()
+    zip_code = tb_zip.get()
 
     # if the information is not exist, add it.
     if name not in information_form:
-        information_form[name]
-    elif address not in information_form:
-        information_form[address]
-    elif city not in information_form:
-        information_form[city]
-    elif state not in information_form:
-        information_form[state]
-    elif zip not in information_form:
-        information_form[zip]
+        information_form[name] = [str(address), str(city), str(state), str(zip_code)]
     else:
         tkinter.messagebox.showinfo("!", "That entry already exists")
+    print(information_form)
+
 
 def del_info(information_form):
     name = input(tb_name)
     address = input(tb_address)
     city = input(tb_city)
     state = input(tb_state)
-    zip = input(tb_Zip)
+    zip_code = input(tb_Zip)
 
     # if the information is found, delete the entry.
     if name in information_form:
@@ -115,8 +106,8 @@ def del_info(information_form):
         del information_form[city]
     elif state in information_form:
         del information_form[state]
-    elif zip in information_form:
-        del information_form[zip]
+    elif zip_code in information_form:
+        del information_form[zip_code]
     else:
         tkinter.messagebox.showinfo("!", "That entry is not exists")
 
@@ -126,9 +117,9 @@ def find_info(information_form):
     address = input(tb_address)
     city = input(tb_city)
     state = input(tb_state)
-    zip = input(tb_Zip)
+    zip_code = input(tb_Zip)
     # find information in dictionary
-    information_form.get(name, address, city, state, zip)
+    information_form.get(name, address, city, state, zip_code)
 
 
 def mod_info(information_form):
@@ -136,7 +127,7 @@ def mod_info(information_form):
     address = input(tb_address)
     city = input(tb_city)
     state = input(tb_state)
-    zip = input(tb_Zip)
+    zip_code = input(tb_Zip)
 
     if name in information_form:
         # get new name
